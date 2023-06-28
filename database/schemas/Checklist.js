@@ -17,6 +17,7 @@ const checklistSchema = new mongoose.Schema({
             ref: 'Product',
         },
         qty: Number,
+        unit: String,
         checked: {
             type: Boolean,
             default: false,
