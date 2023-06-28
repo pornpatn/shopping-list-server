@@ -5,8 +5,20 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    category: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+    },
+    order: Number,
     tags: [String],
+    units: [String],
+    codes: [{
+        market: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Market',
+        },
+        code: String,
+    }],
     content: String,
     createdAt: {
         type: Date,

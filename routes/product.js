@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const skip = getIntValue(req.query.skip, 0);
     const limit = getIntValue(req.query.limit, 10);
     const count = await Product.find().count();
-    const data = await Product.find().sort(sortOptions).skip(skip).limit(limit);
+    const data = await Product.find().populate("category").sort(sortOptions).skip(skip).limit(limit);
 
     res.send({
         success: true,
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const product = await Product.findOne({ _id: req.params.id });
+        const product = await Product.findOne({ _id: req.params.id }).populate("category");
         res.send({
             success: true,
             message: 'Product retrived successfully',
