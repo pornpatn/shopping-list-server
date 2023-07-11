@@ -17,6 +17,7 @@ const orderSchema = new mongoose.Schema({
             ref: 'Product',
         },
         qty: Number,
+        unit: String,
         checked: {
             type: Boolean,
             default: false,
@@ -31,6 +32,8 @@ const orderSchema = new mongoose.Schema({
         ref: 'Market',
     },
     content: String,
+    scheduleDeliveryDate: Date,
+    deliveryDate: Date,
     createdAt: {
         type: Date,
         default: () => Date.now(),
